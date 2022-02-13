@@ -1,23 +1,19 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
-#include <sys/wait.h>
+#include <time.h>
 
 int main()
 {
-    int fork_result;
-    fork_result = fork();
-    if (fork_result >= 1)
-    {
-        printf("Soy el proceso padre\n");
-    }
-    else if (fork_result == 0)
-    {
-        printf("Soy el proceso hijo\n");
-    }
-    else
-    {
-        printf("Error al crear el proceso\n");
-    }
-    return 0;
+	time_t t;
+	printf("Bienvenido al Programa\n");
+	printf("Process Type	PID PPID	TIME\n");
+	fork();
+	fork();
+	if(fork()==0)
+	{
+	sleep(1);
+	}
+	time(&t);
+    printf("System Process  %d  %d  %s", getpid(),getppid(),ctime(&t));
+	return 0;
 }
